@@ -1,9 +1,9 @@
 A bunch of different code snippets from different programs/ projects I've worked on.
 
-BoneShaderColored:
+#BoneShaderColored:
 From my Unity Custom Realtime Rigging project. Below is one of the shaders I developed that manipulates all the vertices by the rig. The shader uses the vertex color to determine what bone matrix it is assigned to and applies it to the vertex transform. It also assigns a unique color to each vertex based off what bone they’re assigned to. Useful for making sure that vertices are assigned to the correct bones when rigging using our system.
 
-DrawLine:
+#DrawLine:
 One of the functions for the drawing board I developed from when I was a research assistant working in the Cross Reality Collaboration Sandbox group in my University. Given two coordinate points and a brush size, it creates a line between them made out of squares facing in the direction of the line. Originally it did this by interpolating squares between the points a large amount of times, but that was a bit too expensive since the squares would overlap, which meant that the same pixel could be told to be drawn hundreds of times, lowering performance.
 Essentially, what it does now is sets either a vertical or horizontal strip of pixels at the starting coordinate point (strip length is largest line which can be made through the square vertically or horizontally, respectively), and then moves along the line to the next columns or row and sets another strip of pixels, which repeats till it gets to the other coordinate point. So instead of stacking squares on each other, I’m drawing the strips that all the squares would cover.
 Note: This implementation is in the CPU, as this was created near the end of the project. While my implementation works, a better GPU solution would be to create two triangles, feed them to a vertex shader and have it pass to the pixel shader to draw directly to the canvas’s texture. This way the GPU would do all the heavy lifting of calculating which pixels need to be filled.
